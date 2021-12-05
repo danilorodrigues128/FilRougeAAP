@@ -1,6 +1,6 @@
 void funcao1()
 {
-  
+  printf("func1");
   
 }
 
