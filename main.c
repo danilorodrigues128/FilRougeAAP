@@ -1,5 +1,11 @@
-#include bbbbbbbbbb
+void funcao1()
+{
+  
+  
+}
 
-
-
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+void funcao2()
+{
+  
+  
+}
