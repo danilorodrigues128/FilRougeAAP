@@ -1,17 +1,14 @@
-void funcao1()
-{
-  printf("func1");
-  
-}
+#include <stdio.h>
+#include "include/avl.h"
 
-void funcao2()
+int main(int argc, char* argv[])
 {
-  printf("func2");
-  
-}
-
-void funcao3()
-{
-  printf("func2");
-  
+	T_elt element = genElt();
+	T_elt element2 = genElt();
+	T_elt dup = eltdup(element);
+	printf("%s\n",toString(element));
+	printf("%d\n",eltcmp(element, dup));
+	printf("%d\n",eltcmp(element2, dup));
+	
+	return 0;
 }
