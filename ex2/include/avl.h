@@ -4,7 +4,7 @@
 #include "elt.h"
 #include <sys/stat.h>
 #include "check.h"
-#include "quick_sort.h"
+#include "list.h"
 
 #define	MAX2(a, b)	    ((a) >= (b) ? (a) : (b))
 #define	MIN2(a, b)	    ((a) <= (b) ? (a) : (b))
@@ -20,7 +20,7 @@ typedef enum {
 typedef struct T_node
 {
 	T_elt signature;
-	T_elt* mots;
+	T_list mots;
 	
 	T_bal balance;
 	
@@ -30,7 +30,7 @@ typedef struct T_node
 
 extern char * outputPath;
 
-int insertAVL(T_node** root, T_elt element);
+int insertAVL(T_node** root, T_elt element, int size);
 void printAVL(T_avl root, int indent);
 int heightAVL(T_avl root);
 int nbNodesAVL(T_avl root);

@@ -1,1 +1,1 @@
-main.c include/elt.c include/quick_sort.c
+main.c include/elt.c include/avl.c

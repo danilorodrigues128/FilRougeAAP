@@ -31,17 +31,6 @@ int insertAVL (T_node** root, T_elt element)
 	
 	(*root) = balanceAVL(*root);
 	
-	/*if(deltaH == 0)
-	{
-		return 0;
-	}
-	else
-	{
-		(*root) = balanceAVL(*root);
-	}*/
-	
-	//(*root)->balance = heightAVL((*root)->left)-heightAVL((*root)->right);
-	
 	return (sizeAVL - heightAVL(*root) != 0) ? 1 : 0;
 }
 
