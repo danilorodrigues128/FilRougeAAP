@@ -18,9 +18,9 @@ int insertAVL (T_node** root, T_elt element, int size)
 		(*root) = newNode(element, signature);
 		return 1;
 	}
-	int deltaH;
+	int deltaH = 0;
 	int sizeAVL = heightAVL(*root);
-	int comparaison = eltcmp(element, (*root)->signature);
+	int comparaison = eltcmp(signature, (*root)->signature);
 	if(comparaison == 0)
 	{
 		(*root)->mots = addNode(element, (*root)->mots);
@@ -48,7 +48,10 @@ void printAVL(T_avl root, int indent)
 	{
 		printAVL(root->right, indent+1);
 		for(i=0;i<indent;i++) printf("\t");
-		//printf("(%d) %s\n", root->balance, toString(root->data));
+		printf("(%d) %s\n", root->balance, toString(root->signature));
+		for(i=0;i<indent;i++) printf("\t");
+		showList(root->mots);
+		printf("\n");
 		printAVL(root->left, indent+1);
 	}
 }
@@ -104,7 +107,7 @@ static T_node* newNode(T_elt element, T_elt signature)
 	T_node* node = (T_node*) malloc(sizeof(T_node));
 	
 	node->signature = signature;
-	
+	node->mots = addNode(element, NULL);
 	
 	node->balance = BALANCED;
 	

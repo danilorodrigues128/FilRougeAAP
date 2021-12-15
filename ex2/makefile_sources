@@ -1,1 +1,1 @@
-main.c include/elt.c include/avl.c
+main.c include/elt.c include/avl.c include/list.c
