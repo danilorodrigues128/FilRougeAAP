@@ -1,0 +1,22 @@
+digraph prenoms {
+	node [
+		fontname  = "Arial bold" 
+		fontsize  = "14"
+		fontcolor = "red"
+		style     = "rounded, filled"
+		shape     = "record"
+		fillcolor = "grey90"
+		color     = "blue"
+		width     = "2"
+	]
+
+	edge [
+		color     = "blue"
+	]
+
+	JEANNINE [label = "{{<c> JEANNINE | <b> 1} | { <g> | <d>}}"];
+	JEANNINE [label = "{{<c> JEANNINE | <b> 1} | { <g> | <d> NULL}}"];
+	JEANNINE:g -> HABACUC;
+	HABACUC [label = "{{<c> HABACUC | <b> 0} | { <g> | <d>}}"];
+	HABACUC [label = "{{<c> HABACUC | <b> 0} | { <g> NULL | <d> NULL}}"];
+}
