@@ -2,7 +2,7 @@
 
 char * outputPath = "."; 
 
-static T_node* newNode(T_elt element, T_elt signature);
+static T_node* newNode(T_elt element, T_elt signature, int nbLetters);
 static T_node* balanceAVL(T_node* root);
 static T_node* rotateLeft(T_node* B);
 static T_node* rotateRight(T_node* A);
@@ -15,7 +15,7 @@ int insertAVL (T_node** root, T_elt element, int size)
 
 	if((*root) == NULL)
 	{
-		(*root) = newNode(element, signature);
+		(*root) = newNode(element, signature, size);
 		return 1;
 	}
 	int deltaH = 0;
@@ -73,22 +73,18 @@ int nbNodesAVL(T_avl root)
 	return 1 + nbNodesAVL(root->left) + nbNodesAVL(root->right);
 }
 
-int getProfondeur(T_avl root, T_elt element, int size)
+void afficherAnagrammes(T_avl root)
 {
-	element = selectionSort(element, size);
+	/*if(root == NULL) return;
 	
-	int test, counter=0;
-	while(root != NULL)
+	if(getSize(root->mots) >= 2)
 	{
-		test = eltcmp(element,root->signature);
-		
-		if (test == 0) return counter;
-		else if  (test < 0) root = root->left; 
-		else root = root->right;
-		counter++;
+		printf()
+		showList(roots->mots);
 	}
 	
-	return -1;  
+	afficherAnagrammes(root->left);
+	afficherAnagrammes(root->right);*/
 }
 
 T_node * searchAVL_rec(T_avl root, T_elt e, int size){
@@ -124,12 +120,13 @@ T_node* searchAVL_it(T_avl root, T_elt element, int size)
 
 //-------------
 
-static T_node* newNode(T_elt element, T_elt signature)
+static T_node* newNode(T_elt element, T_elt signature, int nbLetters)
 {
 	T_node* node = (T_node*) malloc(sizeof(T_node));
 	
 	node->signature = signature;
 	node->mots = addNode(element, NULL);
+	node->nbLetters = nbLetters;
 	
 	node->balance = BALANCED;
 	

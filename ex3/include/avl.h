@@ -21,6 +21,7 @@ typedef struct T_node
 {
 	T_elt signature;
 	T_list mots;
+	int nbLetters;
 	
 	T_bal balance;
 	
@@ -34,7 +35,7 @@ int insertAVL(T_node** root, T_elt element, int size);
 void printAVL(T_avl root, int indent);
 int heightAVL(T_avl root);
 int nbNodesAVL(T_avl root);
-int getProfondeur(T_avl avl, T_elt element, int size);
+void afficherAnagrammes(T_avl root);
 
 T_node * searchAVL_rec(T_avl root, T_elt e, int size);
 T_node* searchAVL_it(T_avl root, T_elt element, int size);

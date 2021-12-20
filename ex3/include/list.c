@@ -57,6 +57,19 @@ T_elt getFirstElt(T_list l)
 	return l->data; 
 }
 
+unsigned int getSize(const T_list l)
+{
+	int count = 0;
+	T_nodeList* nextNode = l;
+	while(nextNode != NULL)
+	{
+		count++;
+		nextNode = nextNode->pNext;
+	}
+	
+	return count;
+}
+
 int inList(T_elt e, const T_list l)
 {
 	T_nodeList* nextNode = l;

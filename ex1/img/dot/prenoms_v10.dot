@@ -33,10 +33,12 @@ digraph prenoms {
 	ADELAID:d -> ADELIN;
 	ADELIN [label = "{{<c> ADELIN | <b> 0} | { <g> | <d>}}"];
 	ADELIN [label = "{{<c> ADELIN | <b> 0} | { <g> NULL | <d> NULL}}"];
-	ADOLPH:d -> ADRIE;
-	ADRIE [label = "{{<c> ADRIE | <b> -1} | { <g> | <d>}}"];
-	ADRIE [label = "{{<c> ADRIE | <b> -1} | { <g> NULL | <d> }}"];
-	ADRIE:d -> ADRIENN;
+	ADOLPH:d -> ADRIENN;
 	ADRIENN [label = "{{<c> ADRIENN | <b> 0} | { <g> | <d>}}"];
-	ADRIENN [label = "{{<c> ADRIENN | <b> 0} | { <g> NULL | <d> NULL}}"];
+	ADRIENN:g -> ADRIE;
+	ADRIE [label = "{{<c> ADRIE | <b> 0} | { <g> | <d>}}"];
+	ADRIE [label = "{{<c> ADRIE | <b> 0} | { <g> NULL | <d> NULL}}"];
+	ADRIENN:d -> AGAP;
+	AGAP [label = "{{<c> AGAP | <b> 0} | { <g> | <d>}}"];
+	AGAP [label = "{{<c> AGAP | <b> 0} | { <g> NULL | <d> NULL}}"];
 }

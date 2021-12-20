@@ -28,6 +28,8 @@ int main(int argc, char* argv[])
 		createDotAVL(avl, "prenoms");
 	}
 	
+	fclose(fichier);
+	
 	return 0;
 }
 

@@ -1,0 +1,1 @@
+main.c include/elt.c include/avl.c include/list.c include/stack.c include/anagram_index.c

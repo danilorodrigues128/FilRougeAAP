@@ -28,12 +28,13 @@ int main(int argc, char* argv[])
 		
 		size = processWord(str);
 	
-		T_elt nom = (T_elt) malloc(size * sizeof(char));
-		nom = eltdup(str);
+		T_elt mot = (T_elt) malloc(size * sizeof(char));
+		mot = eltdup(str);
 		
-		insertAVL(&avl, nom, size);
+		insertAVL(&avl, mot, size);
 	}
 	clock_t fin = clock();
+	fclose(fichier);
 	
 	long int duree = (fin - debut) * 1000 / CLOCKS_PER_SEC;
 	int nbNoeuds = nbNodesAVL(avl);
@@ -77,6 +78,8 @@ int main(int argc, char* argv[])
 		scanf("%s", buffer);
 	}
 	
+	free(buffer);
+	
 	return 0;
 }
 
@@ -88,8 +91,6 @@ int processWord(char* name)
 		if(name[j]=='\n')
 		{
 			name[j]='\0';
-			
-			//printf("ProcessWord : %s (%d)\n",name,j);
 			return j;
 		}
 	}

@@ -14,9 +14,9 @@ digraph prenoms {
 		color     = "blue"
 	]
 
-	JEANNINE [label = "{{<c> JEANNINE | <b> 1} | { <g> | <d>}}"];
-	JEANNINE [label = "{{<c> JEANNINE | <b> 1} | { <g> | <d> NULL}}"];
-	JEANNINE:g -> HABACUC;
-	HABACUC [label = "{{<c> HABACUC | <b> 0} | { <g> | <d>}}"];
-	HABACUC [label = "{{<c> HABACUC | <b> 0} | { <g> NULL | <d> NULL}}"];
+	ABDEL-HAMI [label = "{{<c> ABDEL-HAMI | <b> -1} | { <g> | <d>}}"];
+	ABDEL-HAMI [label = "{{<c> ABDEL-HAMI | <b> -1} | { <g> NULL | <d> }}"];
+	ABDEL-HAMI:d -> ABDELKADE;
+	ABDELKADE [label = "{{<c> ABDELKADE | <b> 0} | { <g> | <d>}}"];
+	ABDELKADE [label = "{{<c> ABDELKADE | <b> 0} | { <g> NULL | <d> NULL}}"];
 }

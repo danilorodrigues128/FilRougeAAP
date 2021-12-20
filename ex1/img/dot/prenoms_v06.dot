@@ -14,22 +14,21 @@ digraph prenoms {
 		color     = "blue"
 	]
 
-	HABACUC [label = "{{<c> HABACUC | <b> -1} | { <g> | <d>}}"];
-	HABACUC:g -> AXEL;
-	AXEL [label = "{{<c> AXEL | <b> -1} | { <g> | <d>}}"];
-	AXEL [label = "{{<c> AXEL | <b> -1} | { <g> NULL | <d> }}"];
-	AXEL:d -> CARINE;
-	CARINE [label = "{{<c> CARINE | <b> 0} | { <g> | <d>}}"];
-	CARINE [label = "{{<c> CARINE | <b> 0} | { <g> NULL | <d> NULL}}"];
-	HABACUC:d -> MARISE;
-	MARISE [label = "{{<c> MARISE | <b> -1} | { <g> | <d>}}"];
-	MARISE:g -> JEANNINE;
-	JEANNINE [label = "{{<c> JEANNINE | <b> 0} | { <g> | <d>}}"];
-	JEANNINE [label = "{{<c> JEANNINE | <b> 0} | { <g> NULL | <d> NULL}}"];
-	MARISE:d -> TOUSSAINT;
-	TOUSSAINT [label = "{{<c> TOUSSAINT | <b> 1} | { <g> | <d>}}"];
-	TOUSSAINT [label = "{{<c> TOUSSAINT | <b> 1} | { <g> | <d> NULL}}"];
-	TOUSSAINT:g -> MOISE;
-	MOISE [label = "{{<c> MOISE | <b> 0} | { <g> | <d>}}"];
-	MOISE [label = "{{<c> MOISE | <b> 0} | { <g> NULL | <d> NULL}}"];
+	ABE [label = "{{<c> ABE | <b> 0} | { <g> | <d>}}"];
+	ABE:g -> ABDELKADE;
+	ABDELKADE [label = "{{<c> ABDELKADE | <b> 0} | { <g> | <d>}}"];
+	ABDELKADE:g -> ABDEL-HAMI;
+	ABDEL-HAMI [label = "{{<c> ABDEL-HAMI | <b> 0} | { <g> | <d>}}"];
+	ABDEL-HAMI [label = "{{<c> ABDEL-HAMI | <b> 0} | { <g> NULL | <d> NULL}}"];
+	ABDELKADE:d -> ABDELKRI;
+	ABDELKRI [label = "{{<c> ABDELKRI | <b> 0} | { <g> | <d>}}"];
+	ABDELKRI [label = "{{<c> ABDELKRI | <b> 0} | { <g> NULL | <d> NULL}}"];
+	ABE:d -> ADELAID;
+	ADELAID [label = "{{<c> ADELAID | <b> 0} | { <g> | <d>}}"];
+	ADELAID:g -> ADEL;
+	ADEL [label = "{{<c> ADEL | <b> 0} | { <g> | <d>}}"];
+	ADEL [label = "{{<c> ADEL | <b> 0} | { <g> NULL | <d> NULL}}"];
+	ADELAID:d -> ADELIN;
+	ADELIN [label = "{{<c> ADELIN | <b> 0} | { <g> | <d>}}"];
+	ADELIN [label = "{{<c> ADELIN | <b> 0} | { <g> NULL | <d> NULL}}"];
 }

@@ -12,6 +12,7 @@ T_nodeList * addNode (T_elt e, T_nodeList * n);
 void showList(T_list l);
 void freeList(T_list l);
 T_elt getFirstElt(T_list l);
+unsigned int getSize(const T_list l);
 int inList(T_elt e, const T_list l);
 
 #endif 
