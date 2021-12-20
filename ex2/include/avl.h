@@ -36,7 +36,7 @@ int heightAVL(T_avl root);
 int nbNodesAVL(T_avl root);
 
 T_node* searchAVL_rec(T_avl root, T_elt element);
-T_node* searchAVL_it(T_avl root, T_elt element);
+T_node* searchAVL_it(T_avl root, T_elt element, int size);
 
 void createDotAVL(const T_avl root, const char* basename);
 
