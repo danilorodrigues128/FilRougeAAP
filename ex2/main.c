@@ -27,7 +27,6 @@ int main(int argc, char* argv[])
 		counter++;
 		
 		size = processWord(str);
-		printf("%s\n",str);
 	
 		T_elt nom = (T_elt) malloc(size * sizeof(char));
 		nom = eltdup(str);
@@ -41,7 +40,7 @@ int main(int argc, char* argv[])
 	int hauteur = heightAVL(avl);
 	int hauteurMin = (int)log2(nbNoeuds);
 	
-	//system("clear");
+	system("clear");
 	printf("Taille des mots : %d\n", size);
 	printf("Nombre de mots : %d\n",counter);
 	printf("Durée de construction : %ld ms\n", duree);
@@ -49,33 +48,34 @@ int main(int argc, char* argv[])
 	printf("Hauteur de l'arbre : %d\n", hauteur);
 	printf("Hauteur minimale : %d\n", hauteurMin);
 	
-	createDotAVL(avl, "disco");
-	
-	T_node* node = searchAVL_it(avl, "A", size);
-	printf("\nSig : %s\n",toString(node->signature));
-	
-	/*T_elt buffer = (T_elt) calloc(size + 1, sizeof(char));
+	T_elt buffer = (T_elt) calloc(size + 1, sizeof(char));
 	
 	printf("\nMot a chercher : ");
 	scanf("%s", buffer);
 	
 	while(strcmp(buffer, "q"))
 	{
-		size = processWord(buffer);
-		
 		debut = clock();
 		T_node* node = searchAVL_it(avl, buffer, size);
 		fin = clock();
 	
 		system("clear");
-		printf("\n");
-		printf("Mots présentant la même signature (%s) :\n",toString(node->signature));
-		printf("(Pronfondeur du noeud)\n");
-		printf("Temp pour trouver : %ld ms\n", (fin - debut)/CLOCKS_PER_SEC);
+		if(node != NULL)
+		{
+			printf("Mots présentant la même signature (%s) :\n",toString(node->signature));
+			showList(node->mots); printf("\n");
+			printf("Profondeur du noeud : %d\n", getProfondeur(avl, buffer, size));
+			printf("Temp pour trouver : %ld ms\n", (fin - debut) * 1000/CLOCKS_PER_SEC);
+		}
+		else
+		{
+			printf("> [ERREUR] Mot \"%s\" ne pas trouvé\n", buffer);
+		}
+		
 		
 		printf("\nMot a chercher : ");
 		scanf("%s", buffer);
-	}*/
+	}
 	
 	return 0;
 }
@@ -88,6 +88,8 @@ int processWord(char* name)
 		if(name[j]=='\n')
 		{
 			name[j]='\0';
+			
+			//printf("ProcessWord : %s (%d)\n",name,j);
 			return j;
 		}
 	}

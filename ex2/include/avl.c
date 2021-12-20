@@ -85,138 +85,39 @@ T_node* searchAVL_rec(T_avl root, T_elt element)
 	}
 }
 
+int getProfondeur(T_avl root, T_elt element, int size)
+{
+	element = selectionSort(element, size);
+	
+	int test, counter=0;
+	while(root != NULL)
+	{
+		test = eltcmp(element,root->signature);
+		
+		if (test == 0) return counter;
+		else if  (test < 0) root = root->left; 
+		else root = root->right;
+		counter++;
+	}
+	
+	return -1;  
+}
+
 T_node* searchAVL_it(T_avl root, T_elt element, int size)
 {
-	//element = selectionSort(element, size);	
+	element = selectionSort(element, size);
 	
 	int test;
 	while(root != NULL)
-	{	
-		printf("aaaaa\n");
+	{
 		test = eltcmp(element,root->signature);
 		
 		if (test == 0) return root;
-		else if  (test <= 0) root = root->left; 
+		else if  (test < 0) root = root->left; 
 		else root = root->right; 
 	}
 
 	return NULL;  
-}
-
-static void genDotAVL(const T_avl root, FILE* basename)
-{
-	int i;
-	T_elt sig[128];
-	for(i=0;root->signature[i] != '\0',i++)
-	{
-		if(root->signature[i]=='\'')
-		{
-			sig[i] = W
-		}
-	}
-	
-	fprintf(basename, "\t%s",toString(root->signature)); 
-	fprintf(basename, " [label = \"{{<c> %s | <b> %d} | { <g> | <d>}}\"];\n",toString(root->signature),root->balance);
-	if (root->right == NULL && root->left == NULL)
-	{
-		fprintf(basename, "\t%s", toString(root->signature));
-		fprintf(basename, " [label = \"{{<c> %s | <b> %d} | { <g> NULL | <d> NULL}}\"];\n", toString(root->signature),root->balance);
-	}
-	else if (root->right == NULL)
-	{
-		fprintf(basename, "\t%s", toString(root->signature));
-		fprintf(basename, " [label = \"{{<c> %s | <b> %d} | { <g> | <d> NULL}}\"];\n", toString(root->signature),root->balance);
-	}
-	else if (root->left == NULL)
-	{
-		fprintf(basename, "\t%s",toString(root->signature));
-		fprintf(basename, " [label = \"{{<c> %s | <b> %d} | { <g> NULL | <d> }}\"];\n", toString(root->signature),root->balance);
-	}
-
-	if (root->left)
-	{
-		fprintf(basename, "\t%s",toString(root->signature));
-		fprintf(basename, ":g -> %s;\n", toString(root->left->signature));
-		genDotAVL(root->left, basename);
-	}
-
-	if (root->right)
-	{
-		fprintf(basename, "\t%s",toString(root->signature));
-		fprintf(basename,":d -> %s;\n", toString(root->right->signature));
-		genDotAVL(root->right, basename);
-	}
-}
-
-void createDotAVL(const T_avl root, const char* basename)
-{
-	static char oldBasename[FILENAME_MAX + 1] = "";
-	static unsigned int noVersion = 0;
-
-	char DOSSIER_DOT[FILENAME_MAX + 1]; 
-	char DOSSIER_PNG[FILENAME_MAX + 1]; 
-
-	char fnameDot [FILENAME_MAX + 1];
-	char fnamePng [FILENAME_MAX + 1];
-	char	cmdLine [2 * FILENAME_MAX + 20];
-	FILE *fp;
-	struct stat sb;
-	
-	if (stat(outputPath, &sb) == 0 && S_ISDIR(sb.st_mode)) {
-    } else {
-        printf("Création du répertoire %s\n", outputPath);
-		mkdir(outputPath, 0777);
-    }
-
-	sprintf(DOSSIER_DOT, "%s/img/dot/",outputPath);
-	sprintf(DOSSIER_PNG, "%s/img/png/",outputPath);
-
-	if (oldBasename[0] == '\0') {
-		mkdir(DOSSIER_DOT,	S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH);
-		mkdir(DOSSIER_PNG,	S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH);
-	}
-
-	if (strcmp(oldBasename, basename) != 0) {
-		noVersion = 0;
-		strcpy(oldBasename, basename); 
-	}
-
-	sprintf(fnameDot, "%s%s_v%02u.dot", DOSSIER_DOT, basename, noVersion);
-	sprintf(fnamePng, "%s%s_v%02u.png", DOSSIER_PNG, basename, noVersion);
-
-	CHECK_IF(fp = fopen(fnameDot, "w"), NULL, "erreur fopen dans saveDotBST");
-	
-	noVersion ++;
-    fprintf(fp, "digraph %s {\n", basename);
- 	fprintf(fp, 
-		"\tnode [\n"
-			"\t\tfontname  = \"Arial bold\" \n"
-			"\t\tfontsize  = \"14\"\n"
-			"\t\tfontcolor = \"red\"\n"
-			"\t\tstyle     = \"rounded, filled\"\n"
-			"\t\tshape     = \"record\"\n"
-			"\t\tfillcolor = \"grey90\"\n"
-			"\t\tcolor     = \"blue\"\n"
-			"\t\twidth     = \"2\"\n"
-			"\t]\n"
-		"\n"
-		"\tedge [\n"
-			"\t\tcolor     = \"blue\"\n"
-		"\t]\n\n"
-	);
-
-    if (root == NULL)
-        fprintf(fp, "\n");
-    else
-        genDotAVL(root, fp);
-
-    fprintf(fp, "}\n");	
-    fclose(fp);
-
-    sprintf(cmdLine, "dot -Tpng  %s -o %s", fnameDot, fnamePng);
-    system(cmdLine);
-
-    printf("Creation de '%s' et '%s' ... effectuee\n", fnameDot, fnamePng);
 }
 
 //-------------
