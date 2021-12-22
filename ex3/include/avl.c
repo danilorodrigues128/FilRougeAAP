@@ -2,7 +2,7 @@
 
 char * outputPath = "."; 
 
-static T_node* newNode(T_elt element, T_elt signature, int nbLetters);
+//static T_node* newNode(T_elt element, T_elt signature, int nbLetters);
 static T_node* balanceAVL(T_node* root);
 static T_node* rotateLeft(T_node* B);
 static T_node* rotateRight(T_node* A);
@@ -15,7 +15,7 @@ int insertAVL (T_node** root, T_elt element, int size)
 
 	if((*root) == NULL)
 	{
-		(*root) = newNode(element, signature, size);
+		(*root) = newNodeAVL(element, signature, size);
 		return 1;
 	}
 	int deltaH = 0;
@@ -120,7 +120,7 @@ T_node* searchAVL_it(T_avl root, T_elt element, int size)
 
 //-------------
 
-static T_node* newNode(T_elt element, T_elt signature, int nbLetters)
+T_node* newNodeAVL(T_elt element, T_elt signature, int nbLetters) //temp
 {
 	T_node* node = (T_node*) malloc(sizeof(T_node));
 	

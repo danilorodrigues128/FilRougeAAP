@@ -31,6 +31,8 @@ typedef struct T_node
 
 extern char * outputPath;
 
+T_node* newNodeAVL(T_elt element, T_elt signature, int nbLetters); //temp
+
 int insertAVL(T_node** root, T_elt element, int size);
 void printAVL(T_avl root, int indent);
 int heightAVL(T_avl root);

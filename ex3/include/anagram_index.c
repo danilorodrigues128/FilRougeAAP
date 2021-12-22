@@ -89,10 +89,10 @@ T_anagramIndex searchAnagrams(T_avl avl)
 {
 	if(avl == NULL) return NULL;
 	
-	T_anagramIndex index = NULL;
+	static T_anagramIndex index = NULL;
 	index = addAnagram(index, avl);
-	if(avl->left != NULL) index = addAnagram(index, avl->left);
-	if(avl->right != NULL) index = addAnagram(index, avl->right);
+	if(avl->left != NULL) index = searchAnagrams(avl->left);
+	if(avl->right != NULL) index = searchAnagrams(avl->right);
 	
 	return index;
 }
