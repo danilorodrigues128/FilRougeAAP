@@ -1,14 +1,6 @@
 #include "stack.h"
 
-static T_stackNode* newNode(T_node* nodeAddress)
-{
-	T_stackNode* node = (T_stackNode*) malloc(sizeof(T_stackNode));
-	
-	node->nodeAddress = nodeAddress;
-	node->pNext = NULL;
-	
-	return node;
-}
+static T_stackNode* newNode(T_node* nodeAddress);
 
 T_stack addNodeStack(T_stack stack, T_node* nodeAddress)
 {
@@ -32,4 +24,27 @@ void printStack(T_stack stack)
 		nextNode = nextNode->pNext;
 	}
 	printf("\n");
+}
+
+int getSizeStack(T_stack stack)
+{
+	int count = 0;
+	while(stack != NULL)
+	{
+		count++;
+		stack = stack->pNext;
+	}
+	return count;
+}
+
+//----------------------------------
+
+static T_stackNode* newNode(T_node* nodeAddress)
+{
+	T_stackNode* node = (T_stackNode*) malloc(sizeof(T_stackNode));
+	
+	node->nodeAddress = nodeAddress;
+	node->pNext = NULL;
+	
+	return node;
 }

@@ -28,6 +28,7 @@ typedef struct T_node
 extern char * outputPath;
 
 int insertAVL(T_node** root, T_elt element);
+T_avl fileToAVL(char* fileTxt, int nbWords);
 void printAVL(T_avl root, int indent);
 int heightAVL(T_avl root);
 int nbNodesAVL(T_avl root);

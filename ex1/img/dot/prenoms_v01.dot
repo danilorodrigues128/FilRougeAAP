@@ -14,9 +14,9 @@ digraph prenoms {
 		color     = "blue"
 	]
 
-	ABDEL-HAMI [label = "{{<c> ABDEL-HAMI | <b> -1} | { <g> | <d>}}"];
-	ABDEL-HAMI [label = "{{<c> ABDEL-HAMI | <b> -1} | { <g> NULL | <d> }}"];
-	ABDEL-HAMI:d -> ABDELKADE;
-	ABDELKADE [label = "{{<c> ABDELKADE | <b> 0} | { <g> | <d>}}"];
-	ABDELKADE [label = "{{<c> ABDELKADE | <b> 0} | { <g> NULL | <d> NULL}}"];
+	JEANNIN [label = "{{<c> JEANNIN | <b> 1} | { <g> | <d>}}"];
+	JEANNIN [label = "{{<c> JEANNIN | <b> 1} | { <g> | <d> NULL}}"];
+	JEANNIN:g -> HABACU;
+	HABACU [label = "{{<c> HABACU | <b> 0} | { <g> | <d>}}"];
+	HABACU [label = "{{<c> HABACU | <b> 0} | { <g> NULL | <d> NULL}}"];
 }

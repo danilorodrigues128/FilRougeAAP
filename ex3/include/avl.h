@@ -31,17 +31,12 @@ typedef struct T_node
 
 extern char * outputPath;
 
-T_node* newNodeAVL(T_elt element, T_elt signature, int nbLetters); //temp
-
 int insertAVL(T_node** root, T_elt element, int size);
+T_avl fileToAVL(char* fileTxt);
 void printAVL(T_avl root, int indent);
 int heightAVL(T_avl root);
 int nbNodesAVL(T_avl root);
-void afficherAnagrammes(T_avl root);
 
-T_node * searchAVL_rec(T_avl root, T_elt e, int size);
-T_node* searchAVL_it(T_avl root, T_elt element, int size);
-
-void createDotAVL(const T_avl root, const char* basename);
+T_node* searchAVL(T_avl root, T_elt element, int size);
 
 #endif

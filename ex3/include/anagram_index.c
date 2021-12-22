@@ -1,28 +1,6 @@
 #include "anagram_index.h"
 
-static T_anagramNode* newNode(T_node* nodeAddress)
-{
-	T_anagramNode* node = (T_anagramNode*) malloc(sizeof(T_anagramNode));
-	
-	node->anagrams = addNodeStack(NULL, nodeAddress);
-	node->nbAnagrams = getSize(nodeAddress->mots);
-	node->pNext = NULL;
-	
-	return node;
-}
-
-/*static unsigned int getIndexSize(T_anagramIndex index)
-{
-	int count = 0;
-	T_anagramNode* nextNode = index;
-	while(nextNode != NULL)
-	{
-		count++;
-		nextNode = nextNode->pNext;
-	}
-	
-	return count;
-}*/
+static T_anagramNode* newNode(T_node* nodeAddress);
 
 T_anagramIndex addAnagram(T_anagramIndex anagramIndex, T_node* nodeAddress)
 {
@@ -79,6 +57,8 @@ void printAnagramIndex(T_anagramIndex anagramIndex)
 	T_anagramNode* nextNode = anagramIndex;
 	while(nextNode != NULL)
 	{
+		if(nextNode->nbAnagrams <= 1) break;
+	
 		printf("\n[%d ANAGRAMMES]\n", nextNode->nbAnagrams);
 		printStack(nextNode->anagrams);
 		nextNode = nextNode->pNext;
@@ -95,5 +75,31 @@ T_anagramIndex searchAnagrams(T_avl avl)
 	if(avl->right != NULL) index = searchAnagrams(avl->right);
 	
 	return index;
+}
+
+int countAnagrams(T_anagramIndex anagramIndex)
+{
+	int count = 0;
+	while(anagramIndex != NULL)
+	{
+		if(anagramIndex->nbAnagrams <= 1) break;
+	
+		count += anagramIndex->nbAnagrams * getSizeStack(anagramIndex->anagrams);
+		anagramIndex = anagramIndex->pNext;
+	}
+	return count;
+}
+
+//-----------------------------
+
+static T_anagramNode* newNode(T_node* nodeAddress)
+{
+	T_anagramNode* node = (T_anagramNode*) malloc(sizeof(T_anagramNode));
+	
+	node->anagrams = addNodeStack(NULL, nodeAddress);
+	node->nbAnagrams = getSize(nodeAddress->mots);
+	node->pNext = NULL;
+	
+	return node;
 }
 

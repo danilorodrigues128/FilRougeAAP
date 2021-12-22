@@ -5,6 +5,7 @@
 #include <sys/stat.h>
 #include "check.h"
 #include "list.h"
+#include <time.h>
 
 #define	MAX2(a, b)	    ((a) >= (b) ? (a) : (b))
 #define	MIN2(a, b)	    ((a) <= (b) ? (a) : (b))
@@ -31,14 +32,13 @@ typedef struct T_node
 extern char * outputPath;
 
 int insertAVL(T_node** root, T_elt element, int size);
+T_avl fileToAVL(char* fileTxt, int* size, int* counter);
 void printAVL(T_avl root, int indent);
 int heightAVL(T_avl root);
 int nbNodesAVL(T_avl root);
 int getProfondeur(T_avl avl, T_elt element, int size);
 
-T_node * searchAVL_rec(T_avl root, T_elt e, int size);
-T_node* searchAVL_it(T_avl root, T_elt element, int size);
-
-void createDotAVL(const T_avl root, const char* basename);
+T_node* searchAVL(T_avl root, T_elt element, int size);
+void rechercherMots(T_avl avl, int size);
 
 #endif

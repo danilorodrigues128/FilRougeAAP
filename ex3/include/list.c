@@ -52,11 +52,6 @@ void freeList(T_list l)
 	printf("NULL");
 }
 
-T_elt getFirstElt(T_list l) 
-{
-	return l->data; 
-}
-
 unsigned int getSize(const T_list l)
 {
 	int count = 0;

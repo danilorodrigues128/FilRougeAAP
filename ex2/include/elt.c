@@ -76,6 +76,21 @@ int eltcmp(T_elt element1, T_elt element2)
 {
 	return strcmp(element1, element2);
 }
+
+int processWord(char* name)
+{
+	int j;
+	for(j=0;j<128;j++)
+	{
+		if(name[j]=='\n')
+		{
+			name[j]='\0';
+			return j;
+		}
+	}
+	
+	return -1;
+}
 #endif
 
 #ifdef ELT_STRUCT

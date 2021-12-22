@@ -34,6 +34,28 @@ int insertAVL (T_node** root, T_elt element)
 	return (sizeAVL - heightAVL(*root) != 0) ? 1 : 0;
 }
 
+T_avl fileToAVL(char* fileTxt, int nbWords)
+{
+	FILE* fichier = fopen(fileTxt, "r");
+	CHECK_IF(fichier, NULL, "> [ERREUR] Fichier invalide !");
+	
+	T_avl avl = NULL;
+	
+	int i;
+	char str[128];
+	for(i=0;i<nbWords;i++)
+	{
+		fgets(str, 128, fichier);
+		clearName(str);
+		insertAVL(&avl, str);
+		createDotAVL(avl, "prenoms");
+	}
+	
+	fclose(fichier);
+	
+	return avl;
+}
+
 void printAVL(T_avl root, int indent)
 {
 	int i;

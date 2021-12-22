@@ -76,6 +76,19 @@ int eltcmp(T_elt element1, T_elt element2)
 {
 	return strcmp(element1, element2);
 }
+
+void clearName(char* name)
+{
+	int j;
+	for(j=0;j<128;j++)
+	{
+		if(name[j]=='\n')
+		{
+			name[j-1]='\0';
+			break;
+		}
+	}
+}
 #endif
 
 #ifdef ELT_STRUCT

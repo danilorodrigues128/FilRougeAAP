@@ -13,5 +13,6 @@ typedef struct anagram_node
 T_anagramIndex addAnagram(T_anagramIndex anagramIndex, T_node* nodeAddress);
 void printAnagramIndex(T_anagramIndex anagramIndex);
 T_anagramIndex searchAnagrams(T_avl avl);
+int countAnagrams(T_anagramIndex anagramIndex);
 
 #endif

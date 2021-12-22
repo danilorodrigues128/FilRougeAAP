@@ -2,14 +2,14 @@
 
 char * outputPath = "."; 
 
-//static T_node* newNode(T_elt element, T_elt signature, int nbLetters);
+static T_node* newNodeAVL(T_elt element, T_elt signature, int nbLetters);
 static T_node* balanceAVL(T_node* root);
 static T_node* rotateLeft(T_node* B);
 static T_node* rotateRight(T_node* A);
 
 static T_elt selectionSort(T_elt str, int n);
 
-int insertAVL (T_node** root, T_elt element, int size)
+int insertAVL(T_node** root, T_elt element, int size)
 {
 	T_elt signature = selectionSort(element, size);
 
@@ -39,6 +39,30 @@ int insertAVL (T_node** root, T_elt element, int size)
 	(*root) = balanceAVL(*root);
 	
 	return (sizeAVL - heightAVL(*root) != 0) ? 1 : 0;
+}
+
+T_avl fileToAVL(char* fileTxt)
+{
+	FILE* fichier = fopen(fileTxt, "r");
+	CHECK_IF(fichier, NULL, "> [ERREUR] Fichier invalide !");
+	
+	char str[128];
+	T_avl avl = NULL;
+	
+	int size = 0;
+	
+	while(fgets(str, 128, fichier) != NULL)
+	{
+		size = processWord(str);
+	
+		T_elt mot = (T_elt) malloc(size * sizeof(char));
+		mot = eltdup(str);
+		
+		insertAVL(&avl, mot, size);
+	}
+	fclose(fichier);
+	
+	return avl;
 }
 
 void printAVL(T_avl root, int indent)
@@ -73,35 +97,7 @@ int nbNodesAVL(T_avl root)
 	return 1 + nbNodesAVL(root->left) + nbNodesAVL(root->right);
 }
 
-void afficherAnagrammes(T_avl root)
-{
-	/*if(root == NULL) return;
-	
-	if(getSize(root->mots) >= 2)
-	{
-		printf()
-		showList(roots->mots);
-	}
-	
-	afficherAnagrammes(root->left);
-	afficherAnagrammes(root->right);*/
-}
-
-T_node * searchAVL_rec(T_avl root, T_elt e, int size){
-	e = selectionSort(e, size);
-	
-	int test; 
-
-	if (root== NULL) return NULL; 
-	else {
-		test = eltcmp(e,root->signature); 
-		if (test == 0) return root; // trouvé ! 
-		else if (test < 0) return searchAVL_rec(root->left,e,size);
-		else return searchAVL_rec(root->right,e,size);
-	}
-}
-
-T_node* searchAVL_it(T_avl root, T_elt element, int size)
+T_node* searchAVL(T_avl root, T_elt element, int size)
 {
 	element = selectionSort(element, size);
 	
@@ -120,7 +116,7 @@ T_node* searchAVL_it(T_avl root, T_elt element, int size)
 
 //-------------
 
-T_node* newNodeAVL(T_elt element, T_elt signature, int nbLetters) //temp
+static T_node* newNodeAVL(T_elt element, T_elt signature, int nbLetters)
 {
 	T_node* node = (T_node*) malloc(sizeof(T_node));
 	

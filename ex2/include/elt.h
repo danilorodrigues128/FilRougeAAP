@@ -37,4 +37,5 @@ char* toString(T_elt e);
 T_elt genElt(void);
 T_elt eltdup(T_elt); 
 int eltcmp(T_elt, T_elt);
+int processWord(char* name);
 #endif

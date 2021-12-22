@@ -14,11 +14,11 @@ digraph prenoms {
 		color     = "blue"
 	]
 
-	ABDELKADE [label = "{{<c> ABDELKADE | <b> 0} | { <g> | <d>}}"];
-	ABDELKADE:g -> ABDEL-HAMI;
-	ABDEL-HAMI [label = "{{<c> ABDEL-HAMI | <b> 0} | { <g> | <d>}}"];
-	ABDEL-HAMI [label = "{{<c> ABDEL-HAMI | <b> 0} | { <g> NULL | <d> NULL}}"];
-	ABDELKADE:d -> ABDELKRI;
-	ABDELKRI [label = "{{<c> ABDELKRI | <b> 0} | { <g> | <d>}}"];
-	ABDELKRI [label = "{{<c> ABDELKRI | <b> 0} | { <g> NULL | <d> NULL}}"];
+	HABACU [label = "{{<c> HABACU | <b> 0} | { <g> | <d>}}"];
+	HABACU:g -> AXE;
+	AXE [label = "{{<c> AXE | <b> 0} | { <g> | <d>}}"];
+	AXE [label = "{{<c> AXE | <b> 0} | { <g> NULL | <d> NULL}}"];
+	HABACU:d -> JEANNIN;
+	JEANNIN [label = "{{<c> JEANNIN | <b> 0} | { <g> | <d>}}"];
+	JEANNIN [label = "{{<c> JEANNIN | <b> 0} | { <g> NULL | <d> NULL}}"];
 }

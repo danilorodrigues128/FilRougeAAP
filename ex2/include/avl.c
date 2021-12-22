@@ -41,6 +41,36 @@ int insertAVL (T_node** root, T_elt element, int size)
 	return (sizeAVL - heightAVL(*root) != 0) ? 1 : 0;
 }
 
+T_avl fileToAVL(char* fileTxt, int* size, int* counter)
+{
+	FILE* fichier = fopen(fileTxt, "r");
+	CHECK_IF(fichier, NULL, "> [ERREUR] Fichier invalide !");
+	
+	char str[128];
+	T_avl avl = NULL;
+	
+	int size_aux = 0;
+	int counter_aux = 0;
+	
+	while(fgets(str, 128, fichier) != NULL)
+	{
+		counter_aux++;
+	
+		size_aux = processWord(str);
+	
+		T_elt mot = (T_elt) malloc(size_aux * sizeof(char));
+		mot = eltdup(str);
+		
+		insertAVL(&avl, mot, size_aux);
+	}
+	fclose(fichier);
+	
+	*size = size_aux;
+	*counter = counter_aux;
+	
+	return avl;
+}
+
 void printAVL(T_avl root, int indent)
 {
 	int i;
@@ -91,21 +121,7 @@ int getProfondeur(T_avl root, T_elt element, int size)
 	return -1;  
 }
 
-T_node * searchAVL_rec(T_avl root, T_elt e, int size){
-	e = selectionSort(e, size);
-	
-	int test; 
-
-	if (root== NULL) return NULL; 
-	else {
-		test = eltcmp(e,root->signature); 
-		if (test == 0) return root; // trouvé ! 
-		else if (test < 0) return searchAVL_rec(root->left,e,size);
-		else return searchAVL_rec(root->right,e,size);
-	}
-}
-
-T_node* searchAVL_it(T_avl root, T_elt element, int size)
+T_node* searchAVL(T_avl root, T_elt element, int size)
 {
 	element = selectionSort(element, size);
 	
@@ -120,6 +136,42 @@ T_node* searchAVL_it(T_avl root, T_elt element, int size)
 	}
 
 	return NULL;  
+}
+
+void rechercherMots(T_avl avl, int size)
+{
+	T_elt buffer = (T_elt) calloc(size + 1, sizeof(char));
+	printf("\n[Appuyez sur \'q\' pour quitter]\n");
+	printf("Mot a chercher : ");
+	scanf("%s", buffer);
+	
+	clock_t debut, fin;
+
+	while(strcmp(buffer, "q"))
+	{
+		debut = clock();
+		T_node* node = searchAVL(avl, buffer, size);
+		fin = clock();
+
+		system("clear");
+		if(node != NULL)
+		{
+			printf("Mots présentant la même signature (%s) :\n",toString(node->signature));
+			showList(node->mots); printf("\n");
+			printf("Profondeur du noeud : %d\n", getProfondeur(avl, buffer, size));
+			printf("Temp pour trouver : %ld ms\n", (fin - debut) * 1000/CLOCKS_PER_SEC);
+		}
+		else
+		{
+			printf("> [ERREUR] Mot \"%s\" ne pas trouvé\n", buffer);
+		}
+		
+		printf("\n[Appuyez sur \'q\' pour quitter]\n");
+		printf("Mot a chercher : ");
+		scanf("%s", buffer);
+	}
+
+	free(buffer);
 }
 
 //-------------
