@@ -121,6 +121,17 @@ int getProfondeur(T_avl root, T_elt element, int size)
 	return -1;  
 }
 
+void freeAVL(T_avl avl)
+{
+	if(avl == NULL) return;
+
+	freeAVL(avl->left);
+	freeAVL(avl->right);
+	
+	freeList(avl->mots);
+	free(avl);
+}
+
 T_node* searchAVL(T_avl root, T_elt element, int size)
 {
 	element = selectionSort(element, size);

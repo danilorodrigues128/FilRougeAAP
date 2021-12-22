@@ -44,12 +44,10 @@ void freeList(T_list l)
 	
 	while(l != NULL)
 	{
-		printf("Libération de %s\n", toString(l->data));
 		pAux = l->pNext; 
 		free(l); 
 		l = pAux; 
 	}
-	printf("NULL");
 }
 
 T_elt getFirstElt(T_list l) 

@@ -32,9 +32,9 @@ T_avl fileToAVL(char* fileTxt, int nbWords);
 void printAVL(T_avl root, int indent);
 int heightAVL(T_avl root);
 int nbNodesAVL(T_avl root);
+void freeAVL(T_avl avl);
 
-T_node* searchAVL_rec(T_avl root, T_elt element);
-T_node* searchAVL_it(T_avl root, T_elt element);
+T_node* searchAVL(T_avl root, T_elt element);
 
 void createDotAVL(const T_avl root, const char* basename);
 

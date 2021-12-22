@@ -36,6 +36,7 @@ T_avl fileToAVL(char* fileTxt);
 void printAVL(T_avl root, int indent);
 int heightAVL(T_avl root);
 int nbNodesAVL(T_avl root);
+void freeAVL(T_avl avl);
 
 T_node* searchAVL(T_avl root, T_elt element, int size);
 

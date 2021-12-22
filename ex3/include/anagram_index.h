@@ -14,5 +14,6 @@ T_anagramIndex addAnagram(T_anagramIndex anagramIndex, T_node* nodeAddress);
 void printAnagramIndex(T_anagramIndex anagramIndex);
 T_anagramIndex searchAnagrams(T_avl avl);
 int countAnagrams(T_anagramIndex anagramIndex);
+void freeAnagramIndex(T_anagramIndex index);
 
 #endif

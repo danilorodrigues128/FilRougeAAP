@@ -97,6 +97,17 @@ int nbNodesAVL(T_avl root)
 	return 1 + nbNodesAVL(root->left) + nbNodesAVL(root->right);
 }
 
+void freeAVL(T_avl avl)
+{
+	if(avl == NULL) return;
+
+	freeAVL(avl->left);
+	freeAVL(avl->right);
+	
+	freeList(avl->mots);
+	free(avl);
+}
+
 T_node* searchAVL(T_avl root, T_elt element, int size)
 {
 	element = selectionSort(element, size);

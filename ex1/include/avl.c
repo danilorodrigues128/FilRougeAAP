@@ -85,19 +85,16 @@ int nbNodesAVL(T_avl root)
 	return 1 + nbNodesAVL(root->left) + nbNodesAVL(root->right);
 }
 
-T_node* searchAVL_rec(T_avl root, T_elt element)
+void freeAVL(T_avl avl)
 {
-	if (root == NULL) return NULL;
-	
-	else {
-		int test = eltcmp(element,root->data); 
-		if (test == 0) return root;
-		else if (test <= 0) return searchAVL_rec(root->left,element);
-		else return searchAVL_rec(root->right,element);
-	}
+	if(avl == NULL) return;
+
+	freeAVL(avl->left);
+	freeAVL(avl->right);
+	free(avl);
 }
 
-T_node* searchAVL_it(T_avl root, T_elt element)
+T_node* searchAVL(T_avl root, T_elt element)
 {
 	int test;
 	while(root != NULL)
@@ -265,35 +262,35 @@ static T_node* rotateRight(T_node* A)
 
 static void genDotAVL(const T_avl root, FILE* basename)
 {
-	fprintf(basename, "\t%s",toString(root->data)); 
+	fprintf(basename, "\t\"%s\"",toString(root->data)); 
 	fprintf(basename, " [label = \"{{<c> %s | <b> %d} | { <g> | <d>}}\"];\n",toString(root->data),root->balance);
 	if (root->right == NULL && root->left == NULL)
 	{
-		fprintf(basename, "\t%s", toString(root->data));
+		fprintf(basename, "\t\"%s\"", toString(root->data));
 		fprintf(basename, " [label = \"{{<c> %s | <b> %d} | { <g> NULL | <d> NULL}}\"];\n", toString(root->data),root->balance);
 	}
 	else if (root->right == NULL)
 	{
-		fprintf(basename, "\t%s", toString(root->data));
+		fprintf(basename, "\t\"%s\"", toString(root->data));
 		fprintf(basename, " [label = \"{{<c> %s | <b> %d} | { <g> | <d> NULL}}\"];\n", toString(root->data),root->balance);
 	}
 	else if (root->left == NULL)
 	{
-		fprintf(basename, "\t%s",toString(root->data));
+		fprintf(basename, "\t\"%s\"",toString(root->data));
 		fprintf(basename, " [label = \"{{<c> %s | <b> %d} | { <g> NULL | <d> }}\"];\n", toString(root->data),root->balance);
 	}
 
 	if (root->left)
 	{
-		fprintf(basename, "\t%s",toString(root->data));
-		fprintf(basename, ":g -> %s;\n", toString(root->left->data));
+		fprintf(basename, "\t\"%s\"",toString(root->data));
+		fprintf(basename, ":g -> \"%s\";\n", toString(root->left->data));
 		genDotAVL(root->left, basename);
 	}
 
 	if (root->right)
 	{
-		fprintf(basename, "\t%s",toString(root->data));
-		fprintf(basename,":d -> %s;\n", toString(root->right->data));
+		fprintf(basename, "\t\"%s\"",toString(root->data));
+		fprintf(basename,":d -> \"%s\";\n", toString(root->right->data));
 		genDotAVL(root->right, basename);
 	}
 }

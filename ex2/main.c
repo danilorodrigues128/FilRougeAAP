@@ -31,6 +31,8 @@ int main(int argc, char* argv[])
 	
 	rechercherMots(avl, size);
 	
+	freeAVL(avl);
+	
 	return 0;
 }
 

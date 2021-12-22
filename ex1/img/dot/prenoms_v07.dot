@@ -14,24 +14,24 @@ digraph prenoms {
 		color     = "blue"
 	]
 
-	HABACU [label = "{{<c> HABACU | <b> -1} | { <g> | <d>}}"];
-	HABACU:g -> AXE;
-	AXE [label = "{{<c> AXE | <b> -1} | { <g> | <d>}}"];
-	AXE [label = "{{<c> AXE | <b> -1} | { <g> NULL | <d> }}"];
-	AXE:d -> CARIN;
-	CARIN [label = "{{<c> CARIN | <b> 0} | { <g> | <d>}}"];
-	CARIN [label = "{{<c> CARIN | <b> 0} | { <g> NULL | <d> NULL}}"];
-	HABACU:d -> MARIS;
-	MARIS [label = "{{<c> MARIS | <b> -1} | { <g> | <d>}}"];
-	MARIS:g -> JEANNIN;
-	JEANNIN [label = "{{<c> JEANNIN | <b> 0} | { <g> | <d>}}"];
-	JEANNIN [label = "{{<c> JEANNIN | <b> 0} | { <g> NULL | <d> NULL}}"];
-	MARIS:d -> NAHOU;
-	NAHOU [label = "{{<c> NAHOU | <b> 0} | { <g> | <d>}}"];
-	NAHOU:g -> MOIS;
-	MOIS [label = "{{<c> MOIS | <b> 0} | { <g> | <d>}}"];
-	MOIS [label = "{{<c> MOIS | <b> 0} | { <g> NULL | <d> NULL}}"];
-	NAHOU:d -> TOUSSAIN;
-	TOUSSAIN [label = "{{<c> TOUSSAIN | <b> 0} | { <g> | <d>}}"];
-	TOUSSAIN [label = "{{<c> TOUSSAIN | <b> 0} | { <g> NULL | <d> NULL}}"];
+	"ABE" [label = "{{<c> ABE | <b> -1} | { <g> | <d>}}"];
+	"ABE":g -> "ABDELKADE";
+	"ABDELKADE" [label = "{{<c> ABDELKADE | <b> 0} | { <g> | <d>}}"];
+	"ABDELKADE":g -> "ABDEL-HAMI";
+	"ABDEL-HAMI" [label = "{{<c> ABDEL-HAMI | <b> 0} | { <g> | <d>}}"];
+	"ABDEL-HAMI" [label = "{{<c> ABDEL-HAMI | <b> 0} | { <g> NULL | <d> NULL}}"];
+	"ABDELKADE":d -> "ABDELKRI";
+	"ABDELKRI" [label = "{{<c> ABDELKRI | <b> 0} | { <g> | <d>}}"];
+	"ABDELKRI" [label = "{{<c> ABDELKRI | <b> 0} | { <g> NULL | <d> NULL}}"];
+	"ABE":d -> "ADELAID";
+	"ADELAID" [label = "{{<c> ADELAID | <b> -1} | { <g> | <d>}}"];
+	"ADELAID":g -> "ADEL";
+	"ADEL" [label = "{{<c> ADEL | <b> 0} | { <g> | <d>}}"];
+	"ADEL" [label = "{{<c> ADEL | <b> 0} | { <g> NULL | <d> NULL}}"];
+	"ADELAID":d -> "ADELIN";
+	"ADELIN" [label = "{{<c> ADELIN | <b> -1} | { <g> | <d>}}"];
+	"ADELIN" [label = "{{<c> ADELIN | <b> -1} | { <g> NULL | <d> }}"];
+	"ADELIN":d -> "ADOLPH";
+	"ADOLPH" [label = "{{<c> ADOLPH | <b> 0} | { <g> | <d>}}"];
+	"ADOLPH" [label = "{{<c> ADOLPH | <b> 0} | { <g> NULL | <d> NULL}}"];
 }

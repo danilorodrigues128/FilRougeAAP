@@ -37,6 +37,14 @@ int getSizeStack(T_stack stack)
 	return count;
 }
 
+void freeStack(T_stack stack)
+{
+	if(stack == NULL) return;
+	
+	freeStack(stack->pNext);
+	free(stack);
+}
+
 //----------------------------------
 
 static T_stackNode* newNode(T_node* nodeAddress)

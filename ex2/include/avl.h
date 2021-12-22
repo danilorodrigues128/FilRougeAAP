@@ -37,6 +37,7 @@ void printAVL(T_avl root, int indent);
 int heightAVL(T_avl root);
 int nbNodesAVL(T_avl root);
 int getProfondeur(T_avl avl, T_elt element, int size);
+void freeAVL(T_avl avl);
 
 T_node* searchAVL(T_avl root, T_elt element, int size);
 void rechercherMots(T_avl avl, int size);

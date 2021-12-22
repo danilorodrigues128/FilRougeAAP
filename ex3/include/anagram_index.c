@@ -90,6 +90,16 @@ int countAnagrams(T_anagramIndex anagramIndex)
 	return count;
 }
 
+void freeAnagramIndex(T_anagramIndex index)
+{
+	if(index == NULL) return;
+	
+	freeAnagramIndex(index->pNext);
+	
+	freeStack(index->anagrams);
+	free(index);
+}
+
 //-----------------------------
 
 static T_anagramNode* newNode(T_node* nodeAddress)

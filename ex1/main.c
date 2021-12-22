@@ -11,5 +11,7 @@ int main(int argc, char* argv[])
 	
 	T_avl avl = fileToAVL(fichierTxt, mots);
 	
+	freeAVL(avl);
+	
 	return 0;
 }
