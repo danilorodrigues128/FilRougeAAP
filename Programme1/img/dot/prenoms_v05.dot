@@ -1,0 +1,32 @@
+digraph prenoms {
+	node [
+		fontname  = "Arial bold" 
+		fontsize  = "14"
+		fontcolor = "red"
+		style     = "rounded, filled"
+		shape     = "record"
+		fillcolor = "grey90"
+		color     = "blue"
+		width     = "2"
+	]
+
+	edge [
+		color     = "blue"
+	]
+
+	"ABE" [label = "{{<c> ABE | <b> 0} | { <g> | <d>}}"];
+	"ABE":g -> "ABDELKADE";
+	"ABDELKADE" [label = "{{<c> ABDELKADE | <b> 0} | { <g> | <d>}}"];
+	"ABDELKADE":g -> "ABDEL-HAMI";
+	"ABDEL-HAMI" [label = "{{<c> ABDEL-HAMI | <b> 0} | { <g> | <d>}}"];
+	"ABDEL-HAMI" [label = "{{<c> ABDEL-HAMI | <b> 0} | { <g> NULL | <d> NULL}}"];
+	"ABDELKADE":d -> "ABDELKRI";
+	"ABDELKRI" [label = "{{<c> ABDELKRI | <b> 0} | { <g> | <d>}}"];
+	"ABDELKRI" [label = "{{<c> ABDELKRI | <b> 0} | { <g> NULL | <d> NULL}}"];
+	"ABE":d -> "ADELAID";
+	"ADELAID" [label = "{{<c> ADELAID | <b> 1} | { <g> | <d>}}"];
+	"ADELAID" [label = "{{<c> ADELAID | <b> 1} | { <g> | <d> NULL}}"];
+	"ADELAID":g -> "ADEL";
+	"ADEL" [label = "{{<c> ADEL | <b> 0} | { <g> | <d>}}"];
+	"ADEL" [label = "{{<c> ADEL | <b> 0} | { <g> NULL | <d> NULL}}"];
+}
